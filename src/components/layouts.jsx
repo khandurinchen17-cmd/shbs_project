@@ -164,9 +164,6 @@ export function AppLayout({ role }) {
                     </button>
                     <h1>{title}</h1>
                     <div className="spacer" />
-                    <Link className="icon-btn" to={`/${role}/notifications`} aria-label="Notifications">
-                        <i className="bi bi-bell" />{unread > 0 && <span className="badge-dot">{unread}</span>}
-                    </Link>
                     <div className="dropdown">
                         <button className="user-chip" type="button" onClick={() => setMenuOpen(!menuOpen)}>
                             <span className="avatar">{who.ini}</span>
