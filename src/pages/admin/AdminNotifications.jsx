@@ -59,7 +59,7 @@ export default function AdminNotifications() {
                     <form onSubmit={send}>
                         <div className="mb-3"><label className="form-label">Send to</label>
                             <select className="form-select" value={audience} onChange={(e) => setAudience(e.target.value)}>
-                                <option value="all">All users</option><option value="student">Students only</option><option value="faculty">Faculty only</option>
+                                <option value="all">All users</option><option value="student">Students only</option><option value="Staff">Staff only</option>
                             </select></div>
                         <div className="mb-3"><label className="form-label">Title</label><input className="form-control" required maxLength="150" value={title} onChange={(e) => setTitle(e.target.value)} /></div>
                         <div className="mb-3"><label className="form-label">Message</label><textarea className="form-control" rows="4" required maxLength="500" value={message} onChange={(e) => setMessage(e.target.value)} /></div>
