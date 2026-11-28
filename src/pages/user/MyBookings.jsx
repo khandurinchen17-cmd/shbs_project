@@ -32,7 +32,6 @@ export default function MyBookings() {
                 <select className="form-select w-auto" value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value="">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="cancelled">Cancelled</option>
                 </select>
-                <Link to="/user/book-hall" className="btn btn-shbs ms-auto"><i className="bi bi-plus-lg me-1" />New booking</Link>
             </div>
             <Wait q={q}>{(rows) => {
                 const shown = rows.filter((b) => (!status || b.status === status) && `${b.ref} ${b.hall} ${b.event}`.toLowerCase().includes(query.toLowerCase()));

@@ -8,7 +8,6 @@ export default function Login() {
     const { login, offline } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [show, setShow] = useState(false);
     const [error, setError] = useState('');
     const [busy, setBusy] = useState(false);
 
@@ -44,12 +43,8 @@ export default function Login() {
                     </div>
                     <div className="mb-4">
                         <label className="form-label" htmlFor="password">Password</label>
-                        <div className="input-group">
-                            <input id="password" type={show ? 'text' : 'password'} className="form-control" required value={password} onChange={(e) => setPassword(e.target.value)} />
-                            <button className="btn btn-outline-secondary" type="button" aria-label="Show password" onClick={() => setShow(!show)}>
-                                <i className={`bi ${show ? 'bi-eye-slash' : 'bi-eye'}`} />
-                            </button>
-                        </div>
+                        {/* REMOVED the extra button and input-group here */}
+                        <input id="password" type="password" className="form-control" required value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <button className="btn btn-shbs w-100 py-2" type="submit" disabled={busy}>{busy ? 'Logging in...' : 'Login'}</button>
                 </form>

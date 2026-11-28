@@ -62,7 +62,6 @@ export default function BookHall() {
                         <div className="col-md-6"><label className="form-label" htmlFor="start">Start time</label><input id="start" type="time" className="form-control" required value={f.start} onChange={set('start')} /></div>
                         <div className="col-md-6"><label className="form-label" htmlFor="end">End time</label><input id="end" type="time" className="form-control" required value={f.end} onChange={set('end')} /></div>
                         <div className="col-md-8"><label className="form-label" htmlFor="event">Event name</label><input id="event" className="form-control" placeholder="e.g. Class Presentation" required value={f.event} onChange={set('event')} /></div>
-                        <div className="col-md-4"><label className="form-label" htmlFor="att">Expected attendees</label><input id="att" type="number" min="1" className="form-control" required value={f.attendees} onChange={set('attendees')} /></div>
                         <div className="col-12"><label className="form-label" htmlFor="purpose">Purpose</label><textarea id="purpose" className="form-control" rows="3" placeholder="Describe the event" required value={f.purpose} onChange={set('purpose')} /></div>
                     </div>
                     {result && <div className="mt-3"><div className={`alert ${alertClass[result.level]} mb-0`}><i className={`bi ${alertIcon[result.level]} me-2`} />{result.msg}</div></div>}

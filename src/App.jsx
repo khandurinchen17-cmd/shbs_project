@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { PublicLayout, AppLayout } from './components/layouts.jsx';
+import Verify from './pages/public/Verifypage.jsx';
 import Home from './pages/public/Home.jsx';
 import About from './pages/public/About.jsx';
 import Login from './pages/public/Login.jsx';
@@ -28,6 +29,7 @@ export default function App() {
     return (
         <Routes>
             <Route element={<PublicLayout />}>
+                <Route path="verify" element={<Verify />} />
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
                 <Route path="login" element={<Login />} />

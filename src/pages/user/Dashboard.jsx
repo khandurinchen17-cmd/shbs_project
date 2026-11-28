@@ -14,7 +14,6 @@ export default function Dashboard() {
             <div className="panel mb-4" style={{ background: 'linear-gradient(135deg,var(--navy),var(--teal-dark))', color: '#fff', border: 0 }}>
                 <div className="panel-body d-flex flex-wrap justify-content-between align-items-center gap-3">
                     <div><h4 className="fw-bold mb-1">Welcome back, {user.name.split(' ')[0]}</h4><p className="mb-0" style={{ color: '#D6E2F0' }}>Here is what is happening with your hall bookings.</p></div>
-                    <Link to="/user/book-hall" className="btn btn-light fw-semibold"><i className="bi bi-calendar-plus me-1" />Book a Hall</Link>
                 </div>
             </div>
             <Wait q={bookings}>{(rows) => {

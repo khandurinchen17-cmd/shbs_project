@@ -9,7 +9,6 @@ import { Loading } from './ui.jsx';
 const USER_NAV = [
     { to: '/user/dashboard', icon: 'speedometer2', label: 'Dashboard' },
     { to: '/user/halls', icon: 'building', label: 'Halls' },
-    { to: '/user/book-hall', icon: 'calendar-plus', label: 'Book Hall' },
     { to: '/user/availability', icon: 'calendar3', label: 'Availability', title: 'Hall Availability' },
     { to: '/user/my-bookings', icon: 'journal-check', label: 'My Bookings' },
     { to: '/user/notifications', icon: 'bell', label: 'Notifications' },
@@ -143,10 +142,15 @@ export function AppLayout({ role }) {
                     <img src={asset('logo.png')} alt="" />
                     <span><strong>Smart Hall</strong><small>Booking System</small></span>
                 </Link>
-                <div className="side-label">{role === 'user' ? 'Menu' : 'Administration'}</div>
                 {nav.map((n) => (
-                    <NavLink key={n.to} to={n.to} className={({ isActive }) => `side-link ${isActive ? 'active' : ''}`}>
-                        <i className={`bi bi-${n.icon}`} />{n.label}
+                    <NavLink key={n.to} to={n.to} className={({ isActive }) => `side-link ${isActive ? 'active' : ''} d-flex align-items-center justify-content-between`}>
+                        <div>
+                            <i className={`bi bi-${n.icon} me-2`} />{n.label}
+                        </div>
+                        {/* NEW: Show the orange badge for unread notifications */}
+                        {n.label === 'Notifications' && unread > 0 && (
+                            <span className="badge bg-warning text-dark rounded-pill">{unread}</span>
+                        )}
                     </NavLink>
                 ))}
                 <div className="side-bottom">

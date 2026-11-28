@@ -14,11 +14,28 @@ export default function Register() {
 
     const submit = async (e) => {
         e.preventDefault();
-        if (f.pass !== f.pass2) { toast('Passwords do not match', 'error'); return; }
+        
+        // 1. Check if passwords match
+        if (f.pass !== f.pass2) { 
+            toast('Passwords do not match', 'error'); 
+            return; 
+        }
+
+        // 2. Check if email belongs to the college domain
+        if (!f.email.trim().toLowerCase().endsWith('@rub.edu.bt')) {
+            toast('Only official college emails (@rub.edu.bt) are allowed to register.', 'error');
+            return;
+        }
+
         try {
             await post('auth.php', 'register', { name: f.name, cid: f.cid, email: f.email, phone: f.phone, role: f.role, dept: f.dept, password: f.pass });
-            toast('Account created. You can log in now.');
-            setTimeout(() => navigate('/login'), 1200);
+            
+            // NEW: Updated success message to tell them to check email
+            toast('Registration successful! Please check your email to verify your account.');
+            
+            // Increased timeout to 3 seconds so they can read the message
+            setTimeout(() => navigate('/login'), 3000);
+            
         } catch (err) {
             toast(err.message, 'error');
         }
@@ -45,12 +62,12 @@ export default function Register() {
                     <div className="row g-3">
                         {field('name', 'Full name')}
                         {field('cid', 'College ID')}
-                        {field('email', 'Email', 'email')}
+                        {field('email', 'Email', 'email', { placeholder: 'example@rub.edu.bt' })}
                         {field('phone', 'Phone', 'tel', { placeholder: '+975 17XXXXXX' })}
                         <div className="col-md-6">
                             <label className="form-label" htmlFor="r-role">I am a</label>
                             <select id="r-role" className="form-select" required value={f.role} onChange={set('role')}>
-                                <option value="">Choose...</option><option value="student">Student</option><option value="faculty">Faculty</option>
+                                <option value="">Choose...</option><option value="student">Student</option><option value="Staff">Staff</option>
                             </select>
                         </div>
                         {field('dept', 'Department')}
